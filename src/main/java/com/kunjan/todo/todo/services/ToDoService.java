@@ -5,6 +5,7 @@ import com.kunjan.todo.todo.repository.ToDoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +15,7 @@ public class ToDoService {
     @Autowired
     private ToDoRepo toDoRepo;
 
-    public List<ToDo> getAllTodos() {
+    public List<ToDo> getAllToDos() {
         return toDoRepo.findAll();
     }
 
@@ -23,8 +24,7 @@ public class ToDoService {
     }
 
     public boolean deleteToDo(Long id) {
-        Optional<ToDo> todo = toDoRepo.findById(id);
-        if(todo.isPresent()) {
+        if(getAvailableTodo(id) != null) {
             toDoRepo.deleteById(id);
             return true;
         }
@@ -32,6 +32,14 @@ public class ToDoService {
     }
 
     public ToDo updateToDo(ToDo updateTodo) {
+        if (updateTodo.getId() == 0){
+            updateTodo.setCreatedAt(new Date());
+        }
         return toDoRepo.save(updateTodo);
+    }
+
+    private ToDo getAvailableTodo(Long id) {
+        Optional<ToDo> todo = toDoRepo.findById(id);
+        return todo.orElse(null);
     }
 }

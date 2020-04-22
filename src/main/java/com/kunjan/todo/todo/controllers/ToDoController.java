@@ -2,6 +2,7 @@ package com.kunjan.todo.todo.controllers;
 
 import com.kunjan.todo.todo.domain.ToDo;
 import com.kunjan.todo.todo.services.ToDoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,15 +10,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
+@Slf4j
 public class ToDoController {
 
 
     @Autowired
     private ToDoService toDoService;
 
-    @GetMapping("/todos")
+    @GetMapping(value = "/todos", produces = {"application/json"})
     public List<ToDo> getAllToDos() {
-        return toDoService.getAllTodos();
+
+        return toDoService.getAllToDos();
     }
 
     @GetMapping("/todos/{id}")
