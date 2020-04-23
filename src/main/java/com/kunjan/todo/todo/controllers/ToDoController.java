@@ -19,7 +19,6 @@ public class ToDoController {
 
     @GetMapping(value = "/todos", produces = {"application/json"})
     public List<ToDo> getAllToDos() {
-
         return toDoService.getAllToDos();
     }
 

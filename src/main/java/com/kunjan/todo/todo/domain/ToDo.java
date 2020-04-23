@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,6 @@ import java.util.Date;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ToDo {
@@ -37,4 +37,7 @@ public class ToDo {
 
     @NotEmpty
     private String createdBy;
+
+    public ToDo() {  }
+
 }
