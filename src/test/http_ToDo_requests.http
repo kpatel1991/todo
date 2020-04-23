@@ -1,12 +1,9 @@
-Host: localhost:8080/api
-###
 
-GET http://localhost:8080/api/todos
+GET {{localhost}}/api/todos
 
 
 ###
-POST /
-Host: localhost:8080/api/
+POST {{localhost}}/
 Content-Type: application/json
 {
     "title": "sdkfjl",
@@ -15,14 +12,14 @@ Content-Type: application/json
 }
 
 ### Delete Request
-DELETE /todos/3
-Host: localhost:8080/api
+DELETE {{localhost}}/todos/3
 
 ###
-PUT /todos/5
-Host: localhost:8080
+DELETE {{localhost}}/todos/1
+
+###
+PUT {{localhost}}/todos/5
 Content-Type: application/json
-Content-Type: text/plain
 
 {
   "id": 1,
