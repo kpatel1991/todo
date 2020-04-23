@@ -1,5 +1,5 @@
 
-GET {{localhost}}/api/todos
+GET {{localhost}}/todos
 
 
 ###
@@ -7,7 +7,7 @@ POST {{localhost}}/
 Content-Type: application/json
 {
     "title": "sdkfjl",
-    "dueAt": "2020-04-",
+    "dueAt": "2020-04-20",
     "createdBy" : "user3"
 }
 
