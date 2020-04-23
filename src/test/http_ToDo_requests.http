@@ -1,0 +1,34 @@
+Host: localhost:8080/api
+###
+
+GET http://localhost:8080/api/todos
+
+
+###
+POST /
+Host: localhost:8080/api/
+Content-Type: application/json
+{
+    "title": "sdkfjl",
+    "dueAt": "2020-04-",
+    "createdBy" : "user3"
+}
+
+### Delete Request
+DELETE /todos/3
+Host: localhost:8080/api
+
+###
+PUT /todos/5
+Host: localhost:8080
+Content-Type: application/json
+Content-Type: text/plain
+
+{
+  "id": 1,
+  "title": "3 st todo update",
+  "description": "Updated 3",
+  "createdAt": "2020-04-22T16:40:41.467+0000",
+  "dueAt": "2020-04-22T16:40:41.467+0000",
+  "createdBy": "user123"
+}
