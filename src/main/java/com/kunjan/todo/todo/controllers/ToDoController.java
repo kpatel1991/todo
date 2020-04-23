@@ -27,7 +27,7 @@ public class ToDoController {
         return toDoService.getToDoById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("/todos")
     public ToDo createToDo(@RequestBody ToDo toDo) {
         return toDoService.updateToDo(toDo);
     }

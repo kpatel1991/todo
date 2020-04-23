@@ -8,8 +8,8 @@ spring:
         dialect: org.hibernate.dialect.MySQL5Dialect
 
   datasource:
-    url: jdbc:mysql://localhost:3306/todo
-    username: root
-    password:
+    url: jdbc:mysql://localhost:3306/todo?serverTimezone=UTC
+    username: springstudent
+    password: springstudent
 server:
   port: 8080
