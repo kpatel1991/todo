@@ -1,5 +1,6 @@
 
 GET {{localhost}}/todos
+Accept: application/yaml
 
 
 ###

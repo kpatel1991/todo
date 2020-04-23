@@ -17,7 +17,12 @@ public class ToDoController {
     @Autowired
     private ToDoService toDoService;
 
-    @GetMapping(value = "/todos", produces = {"application/json"})
+    @GetMapping(value = "/hello")
+    public String sayHello() {
+        return "Hello World!";
+    }
+
+    @GetMapping(value = "/todos")
     public List<ToDo> getAllToDos() {
         return toDoService.getAllToDos();
     }
