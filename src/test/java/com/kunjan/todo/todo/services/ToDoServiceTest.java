@@ -67,6 +67,12 @@ class ToDoServiceTest {
 
         Mockito.when(toDoRepo.findAll())
                 .thenReturn(Arrays.asList(test1, test2));
+
+        Mockito.when(toDoRepo.save(test1))
+                .thenReturn(test1);
+
+        Mockito.when(toDoRepo.save(test2))
+                .thenReturn(test2);
     }
 
     @Test
@@ -92,11 +98,13 @@ class ToDoServiceTest {
 
     @Test
     void deleteToDo() {
+        boolean deleted = toDoService.deleteToDo(2L);
 
+        Assert.assertTrue(deleted);
     }
 
     @Test
     void updateToDo() {
-
+        //TODO
     }
 }
