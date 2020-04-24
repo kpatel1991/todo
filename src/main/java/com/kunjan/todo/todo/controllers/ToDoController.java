@@ -20,13 +20,6 @@ public class ToDoController {
     @Autowired
     private ToDoService toDoService;
 
-    @GetMapping(value = "/hello")
-    public ResponseEntity<String> sayHello() {
-        ArrayList<String> strs = new ArrayList<>();
-
-        return new ResponseEntity<>("Hello World!", HttpStatus.OK);
-    }
-
     @GetMapping(value = "/todos")
     public ResponseEntity<List<ToDo>> getAllToDos() {
         List<ToDo> toDos = toDoService.getAllToDos();
