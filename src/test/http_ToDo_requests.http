@@ -6,6 +6,10 @@ Accept: application/yaml
 GET {{localhost}}/todos
 Accept: application/json
 
+### Should throw Exception
+GET {{localhost}}/todos
+Accept: application/xml
+
 
 ###
 POST {{localhost}}/todos
