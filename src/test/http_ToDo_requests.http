@@ -2,6 +2,10 @@
 GET {{localhost}}/todos
 Accept: application/yaml
 
+###
+GET {{localhost}}/todos
+Accept: application/json
+
 
 ###
 POST {{localhost}}/todos
