@@ -29,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### Profile ###
+src/main/resources/application-dev.yml

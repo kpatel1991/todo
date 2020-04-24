@@ -1,0 +1,41 @@
+
+GET {{localhost}}/todos
+Accept: application/yaml
+
+###
+GET {{localhost}}/todos
+Accept: application/json
+
+### Should throw Exception
+GET {{localhost}}/todos
+Accept: application/xml
+
+
+###
+POST {{localhost}}/todos
+Content-Type: application/json
+
+{
+  "title": "From Post",
+  "description": "POST 3",
+  "createdBy": "POST"
+}
+
+### Delete Request
+DELETE {{localhost}}/todos/9
+
+###
+DELETE {{localhost}}/todos/1
+
+###
+PUT {{localhost}}/todos/5
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "3 st todo update",
+  "description": "Updated 3",
+  "createdAt": "2020-04-22T16:40:41.467+0000",
+  "dueAt": "2020-04-22T16:40:41.467+0000",
+  "createdBy": "user123"
+}
