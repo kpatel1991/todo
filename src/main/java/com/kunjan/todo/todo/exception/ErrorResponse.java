@@ -12,6 +12,7 @@ import static org.apache.commons.lang3.StringUtils.abbreviate;
 /**
  * General class for all errors.
  */
+
 @Data
 @AllArgsConstructor
 public class ErrorResponse {

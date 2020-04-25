@@ -43,6 +43,22 @@ public class ExceptionHandlers {
         return response(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(NotFoundException.class)
+    public final ResponseEntity<ErrorResponse> handleNotFoundException(NotFoundException t) {
+
+        log.error("Request processing failed!" + t.getMessage(), t);
+        String errorMessage = StringUtils.contains(t.getMessage(), ":")
+                ? t.getMessage().split(":")[0] : abbreviate(t.getMessage(), 120);
+
+        ErrorResponse errorResponse = new ErrorResponse(
+                ErrorCode.toErrorCode(t),
+                errorMessage,
+                ZonedDateTime.now(clock),
+                null
+        );
+        return response(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
     private ResponseEntity<ErrorResponse> response(ErrorResponse errorResponse, HttpStatus httpStatus) {
         return response(errorResponse, httpStatus, new HashMap<>());
     }

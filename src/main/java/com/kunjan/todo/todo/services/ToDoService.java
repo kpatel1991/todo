@@ -1,6 +1,7 @@
 package com.kunjan.todo.todo.services;
 
 import com.kunjan.todo.todo.domain.ToDo;
+import com.kunjan.todo.todo.exception.NotFoundException;
 import com.kunjan.todo.todo.repository.ToDoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class ToDoService {
     }
 
     public ToDo getToDoById(Long id) {
-        return toDoRepo.findById(id).orElse(null);
+        return toDoRepo.findById(id).orElseThrow(() -> new NotFoundException("ToDo Not Found!"));
     }
 
     public boolean deleteToDo(Long id) {
@@ -40,6 +41,6 @@ public class ToDoService {
 
     private ToDo getAvailableTodo(Long id) {
         Optional<ToDo> todo = toDoRepo.findById(id);
-        return todo.orElse(null);
+        return todo.orElseThrow(() -> new NotFoundException("ToDo Not Found!"));
     }
 }
