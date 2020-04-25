@@ -2,6 +2,7 @@ package com.kunjan.todo.todo.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Clock;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,8 +24,8 @@ import static org.apache.commons.lang3.StringUtils.abbreviate;
 @Slf4j
 public class ExceptionHandlers {
 
-//    @Autowired
-//    private Clock clock;
+    @Autowired
+    private Clock clock;
 
     @ExceptionHandler(value = { HttpMediaTypeNotAcceptableException.class })
     public final ResponseEntity<ErrorResponse> handleHttpMessageConversionException(
@@ -35,7 +37,7 @@ public class ExceptionHandlers {
         ErrorResponse errorResponse = new ErrorResponse(
                 ErrorCode.toErrorCode(t),
                 errorMessage,
-                ZonedDateTime.now(),
+                ZonedDateTime.now(clock),
                 null
         );
         return response(errorResponse, HttpStatus.BAD_REQUEST);
@@ -49,7 +51,7 @@ public class ExceptionHandlers {
                                                    Map<String, String> additionalHandler){
         HttpHeaders headers = new HttpHeaders();
         additionalHandler.forEach(headers::add);
-        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        headers.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<>(errorResponse, headers, httpStatus);
     }
 }
