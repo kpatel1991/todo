@@ -22,6 +22,11 @@ public class ToDoController {
         return toDoService.getAllToDos();
     }
 
+    @GetMapping(value = "/todos/page/{pageNo}", produces = {"application/json"})
+    public List<ToDo> getToDoPage(@PathVariable int pageNo) {
+        return toDoService.getToDoPage(pageNo);
+    }
+
     @GetMapping("/todos/{id}")
     public ToDo getToDoById(@PathVariable Long id) {
         return toDoService.getToDoById(id);
