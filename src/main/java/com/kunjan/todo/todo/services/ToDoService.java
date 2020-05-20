@@ -3,6 +3,9 @@ package com.kunjan.todo.todo.services;
 import com.kunjan.todo.todo.domain.ToDo;
 import com.kunjan.todo.todo.repository.ToDoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -17,6 +20,22 @@ public class ToDoService {
 
     public List<ToDo> getAllToDos() {
         return toDoRepo.findAll();
+    }
+
+    public List<ToDo> getToDoPage(int pageNo) {
+
+        // check pageNo > 0 --> Invalid page Error
+
+        if(pageNo <= 0) {
+            return null;
+        }
+
+        Pageable pageable = PageRequest.of(pageNo - 1, 10);
+        Page<ToDo> userPage = toDoRepo.findAll(pageable);
+
+        // check userPage.getContent != null --> Page Index out of Bound Error.
+
+        return userPage.getContent().isEmpty() ? null : userPage.getContent();
     }
 
     public ToDo getToDoById(Long id) {
